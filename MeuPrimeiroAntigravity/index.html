@@ -1,12 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu primeiro Antigravity</title>
+    <title>Meu Dia - Lista de Tarefas</title>
+    <!-- Favicon SVG moderno -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Olá, Mundo!!!</h2>
-    <p>Seja Bem-vindo</p>
+    <!-- Toast de Notificação/Alerta Elegante -->
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="toast-message" class="toast-message">Por favor, digite uma tarefa!</span>
+    </div>
+
+    <main class="app-card">
+        <!-- Cabeçalho Centralizado -->
+        <header class="app-header">
+            <div class="header-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span id="current-date">Hoje</span>
+            </div>
+            <h1 class="app-title">Meu Dia</h1>
+            <p class="app-subtitle">Organize suas prioridades com foco e produtividade</p>
+        </header>
+
+        <!-- Barra de Progresso e Métricas -->
+        <section class="progress-section" id="progress-section">
+            <div class="progress-info">
+                <span class="progress-label">Progresso das Tarefas</span>
+                <span class="progress-stat" id="progress-stat">0 de 0 concluídas</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <!-- Formulário de Entrada -->
+        <section class="input-section">
+            <form id="task-form" class="input-wrapper" onsubmit="return false;">
+                <div class="input-field-container">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="task-input" 
+                        placeholder="O que você planeja realizar hoje?" 
+                        autocomplete="off"
+                        aria-label="Digite uma tarefa"
+                        maxlength="150"
+                    >
+                </div>
+                <button id="add-btn" class="btn btn-add" type="submit">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Adicionar</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Filtros Rápidos -->
+        <section class="filters-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Todas <span class="tab-count" id="count-all">0</span></button>
+                <button class="filter-tab" data-filter="pending">Pendentes <span class="tab-count" id="count-pending">0</span></button>
+                <button class="filter-tab" data-filter="completed">Concluídas <span class="tab-count" id="count-completed">0</span></button>
+            </div>
+            <button id="clear-completed-btn" class="btn-text-action" style="display: none;">
+                Limpar concluídas
+            </button>
+        </section>
+
+        <!-- Lista de Tarefas -->
+        <section class="tasks-section">
+            <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+            <!-- Estado Vazio Ilustrado -->
+            <div id="empty-state" class="empty-state">
+                <div class="empty-icon-wrapper">
+                    <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3 class="empty-title">Nenhuma tarefa por aqui</h3>
+                <p class="empty-description">Adicione uma tarefa acima para começar a organizar seu dia com facilidade.</p>
+             </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
