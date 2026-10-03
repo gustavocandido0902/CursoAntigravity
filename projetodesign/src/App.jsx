@@ -85,7 +85,7 @@ export default function App() {
         createdAt: 'Agora mesmo',
         deliveryTimeSlot: 'Próxima Colheita',
         notes: addressData.deliveryNotes || 'Cesta semanal de orgânicos frescos',
-        paymentMethod: `Cartão de Crédito Recorrente (**** ${cardData.number.slice(-4)})`,
+        paymentMethod: `Cartão de Crédito Recorrente (•••• ${cardData.number.slice(-4)})`,
         photoUrl: null,
         deliveredAt: null,
         driverNotes: null

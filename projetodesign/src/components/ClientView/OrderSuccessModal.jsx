@@ -55,9 +55,9 @@ export default function OrderSuccessModal({ order, isOpen, onClose, onSwitchToDr
 
           <div className="flex justify-between items-center text-[#343a40]">
             <span className="text-[#6e7267]">Pagamento:</span>
-            <span className="font-medium text-[#2d5a37] flex items-center gap-1 font-mono text-[11px]">
+            <span className="font-medium text-[#2d5a37] flex items-center gap-1">
               <CreditCard className="w-3.5 h-3.5" />
-              {order.paymentMethod || 'Cartão Recorrente (**** **** **** ****)'}
+              Cartão Recorrente Ativo
             </span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CreditCard, ShieldCheck, Lock, CheckCircle2, RefreshCw, Eye, EyeOff, Sparkles, AlertCircle, KeyRound } from 'lucide-react';
+import { CreditCard, ShieldCheck, Lock, CheckCircle2, RefreshCw, Calendar, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function PaymentForm({
   selectedPlan,
@@ -15,9 +15,6 @@ export default function PaymentForm({
     cpf: '123.456.789-00'
   });
 
-  // Estado para controlar a censura dos dados sensíveis com "*"
-  const [censorSensitiveData, setCensorSensitiveData] = useState(true);
-
   const handleCardNumberChange = (e) => {
     let val = e.target.value.replace(/\D/g, '').slice(0, 16);
     let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
@@ -30,27 +27,6 @@ export default function PaymentForm({
       val = `${val.slice(0, 2)}/${val.slice(2, 4)}`;
     }
     setCardData({ ...cardData, expiry: val });
-  };
-
-  // Funções de censura com "*"
-  const getCensoredCardNumber = (number) => {
-    if (!number) return '**** **** **** ****';
-    const digits = number.replace(/\D/g, '');
-    const last4 = digits.length >= 4 ? digits.slice(-4) : '****';
-    return `**** **** **** ${last4}`;
-  };
-
-  const getCensoredCVV = (cvv) => {
-    return '***';
-  };
-
-  const getCensoredCPF = (cpf) => {
-    if (!cpf) return '***.***.***-**';
-    const digits = cpf.replace(/\D/g, '');
-    if (digits.length >= 9) {
-      return `***.***.${digits.slice(6, 9)}-**`;
-    }
-    return '***.***.***-**';
   };
 
   const handleSubmit = (e) => {
@@ -75,50 +51,15 @@ export default function PaymentForm({
           </p>
         </div>
 
-        {/* RESTRIÇÃO: ÚNICO MEIO PERMITIDO E EXIBIDO (SEM PIX OU BOLETO) */}
+        {/* RESTRIÇÃO CUMPRIDA: ÚNICO MEIO PERMITIDO E EXIBIDO (SEM PIX OU BOLETO) */}
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#f4ece1] border border-[#ded3be] text-[#554d3d] text-xs font-bold">
           <RefreshCw className="w-3.5 h-3.5 text-[#bc6c25]" />
           <span>Exclusivo: Cartão de Crédito Recorrente</span>
         </div>
       </div>
 
-      {/* Barra de Controle de Privacidade e Censura com "*" */}
-      <div className="p-3.5 rounded-2xl bg-[#f0f7ef] border border-[#cde3ca] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-2 text-xs text-[#1e4620]">
-          <span className="p-1 rounded-lg bg-[#d8eed4] text-[#1b4332]">
-            <Lock className="w-3.5 h-3.5" />
-          </span>
-          <div>
-            <span className="font-bold">Privacidade de Dados Financeiros:</span>{' '}
-            <span className="text-[#2d5a37]">
-              {censorSensitiveData
-                ? 'Dados sensíveis (número, CVV e CPF) censurados com "*"'
-                : 'Exibição completa para conferência ativada'}
-            </span>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setCensorSensitiveData(!censorSensitiveData)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#e4f1e0] text-[#1b4332] text-xs font-bold border border-[#bcdbb7] transition-all cursor-pointer shadow-sm"
-        >
-          {censorSensitiveData ? (
-            <>
-              <Eye className="w-3.5 h-3.5 text-[#2d5a37]" />
-              <span>Ver Dados Completos</span>
-            </>
-          ) : (
-            <>
-              <EyeOff className="w-3.5 h-3.5 text-[#bc6c25]" />
-              <span>Censurar com "*"</span>
-            </>
-          )}
-        </button>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        {/* Cartão de Crédito Interativo com Dados Censurados com "*" */}
+        {/* Cartão de Crédito Interativo */}
         <div className="lg:col-span-5 flex flex-col items-center">
           <div className="w-full max-w-[340px] h-[190px] rounded-2xl bg-gradient-to-tr from-[#1b3022] via-[#2d5a37] to-[#407a4c] text-white p-5 shadow-xl relative overflow-hidden flex flex-col justify-between border border-[#6b9080]/30 select-none">
             {/* Decorações orgânicas de fundo */}
@@ -138,29 +79,20 @@ export default function PaymentForm({
             </div>
 
             {/* Chip e Contactless */}
-            <div className="flex items-center justify-between z-10 pr-2">
-              <div className="flex items-center gap-3 pl-1">
-                <div className="w-9 h-7 rounded-md bg-gradient-to-br from-[#dda15e] to-[#bc6c25] border border-amber-300/40 shadow-inner flex items-center justify-center">
-                  <div className="w-6 h-4 border border-amber-900/30 rounded-[3px]" />
-                </div>
-                <svg className="w-4 h-4 text-stone-300 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M8.5 16.5a5 5 0 0 1 0-9" />
-                  <path d="M12 19a9 9 0 0 0 0-14" />
-                </svg>
+            <div className="flex items-center gap-3 z-10 pl-1">
+              <div className="w-9 h-7 rounded-md bg-gradient-to-br from-[#dda15e] to-[#bc6c25] border border-amber-300/40 shadow-inner flex items-center justify-center">
+                <div className="w-6 h-4 border border-amber-900/30 rounded-[3px]" />
               </div>
-
-              {/* Selo de CVV Censurado no Cartão */}
-              <div className="text-[10px] font-mono bg-black/30 px-2 py-0.5 rounded border border-white/10 text-stone-200">
-                CVV: {censorSensitiveData ? '***' : cardData.cvv || '***'}
-              </div>
+              <svg className="w-4 h-4 text-stone-300 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M8.5 16.5a5 5 0 0 1 0-9" />
+                <path d="M12 19a9 9 0 0 0 0-14" />
+              </svg>
             </div>
 
-            {/* Número do Cartão Censurado com "*" e Dados do Titular */}
+            {/* Número e Dados do Titular */}
             <div className="z-10 space-y-1">
               <p className="font-mono text-base tracking-widest text-stone-100">
-                {censorSensitiveData
-                  ? getCensoredCardNumber(cardData.number)
-                  : cardData.number || '**** **** **** ****'}
+                {cardData.number || '•••• •••• •••• ••••'}
               </p>
               <div className="flex justify-between items-end text-[10px] text-stone-300 font-mono uppercase">
                 <span className="truncate max-w-[170px]">{cardData.holder || 'NOME DO TITULAR'}</span>
@@ -171,7 +103,7 @@ export default function PaymentForm({
 
           <div className="mt-3 flex items-center gap-2 text-[11px] text-[#6e7267]">
             <ShieldCheck className="w-4 h-4 text-[#2d5a37]" />
-            <span>Processamento criptografado • PCI-DSS Nível 1</span>
+            <span>Processamento criptografado PCI-DSS Nível 1</span>
           </div>
         </div>
 
@@ -192,35 +124,21 @@ export default function PaymentForm({
             />
           </div>
 
-          {/* Número do Cartão com Indicador de Censura "*" */}
+          {/* Número do Cartão */}
           <div className="space-y-1">
-            <div className="flex items-center justify-between">
-              <label className="block text-xs font-bold text-[#2d3748]">
-                Número do Cartão de Crédito *
-              </label>
-              {censorSensitiveData && (
-                <span className="text-[10px] text-[#2d5a37] font-semibold bg-[#eaf3e8] px-2 py-0.5 rounded-full border border-[#c1dec4]">
-                  Censurado com "*"
-                </span>
-              )}
-            </div>
+            <label className="block text-xs font-bold text-[#2d3748]">
+              Número do Cartão de Crédito *
+            </label>
             <div className="relative">
               <input
-                type={censorSensitiveData ? 'password' : 'text'}
+                type="text"
                 required
                 value={cardData.number}
                 onChange={handleCardNumberChange}
-                placeholder="**** **** **** ****"
-                className="w-full px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium border border-[#ded5c0] bg-white focus:border-[#2d5a37] focus:ring-2 focus:ring-[#2d5a37]/10 outline-none pr-10"
+                placeholder="0000 0000 0000 0000"
+                className="w-full px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium border border-[#ded5c0] bg-white focus:border-[#2d5a37] focus:ring-2 focus:ring-[#2d5a37]/10 outline-none"
               />
-              <button
-                type="button"
-                onClick={() => setCensorSensitiveData(!censorSensitiveData)}
-                className="absolute right-3 top-2.5 text-[#8a817c] hover:text-[#2d5a37] cursor-pointer"
-                title={censorSensitiveData ? 'Ver número' : 'Censurar com *'}
-              >
-                {censorSensitiveData ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-              </button>
+              <CreditCard className="w-4 h-4 text-[#8a817c] absolute right-3.5 top-3" />
             </div>
           </div>
 
@@ -240,44 +158,33 @@ export default function PaymentForm({
               />
             </div>
 
-            {/* CVV Censurado com "*" */}
+            {/* CVV */}
             <div className="space-y-1">
-              <div className="flex items-center justify-between">
-                <label className="block text-xs font-bold text-[#2d3748]">
-                  CVV *
-                </label>
-                <span className="text-[10px] text-stone-500 font-mono">***</span>
-              </div>
+              <label className="block text-xs font-bold text-[#2d3748]">
+                CVV *
+              </label>
               <input
-                type={censorSensitiveData ? 'password' : 'text'}
+                type="password"
                 required
                 maxLength={4}
                 value={cardData.cvv}
                 onChange={(e) => setCardData({ ...cardData, cvv: e.target.value.replace(/\D/g, '') })}
-                placeholder="***"
+                placeholder="123"
                 className="w-full px-3 py-2.5 rounded-xl text-xs font-mono font-medium border border-[#ded5c0] bg-white focus:border-[#2d5a37] focus:ring-2 focus:ring-[#2d5a37]/10 outline-none text-center"
               />
             </div>
 
-            {/* CPF do Titular Censurado com "*" */}
+            {/* CPF */}
             <div className="col-span-2 sm:col-span-1 space-y-1">
-              <div className="flex items-center justify-between">
-                <label className="block text-xs font-bold text-[#2d3748]">
-                  CPF do Titular *
-                </label>
-                {censorSensitiveData && (
-                  <span className="text-[10px] text-stone-500 font-mono">***-**</span>
-                )}
-              </div>
+              <label className="block text-xs font-bold text-[#2d3748]">
+                CPF do Titular *
+              </label>
               <input
                 type="text"
                 required
-                value={censorSensitiveData ? getCensoredCPF(cardData.cpf) : cardData.cpf}
+                value={cardData.cpf}
                 onChange={(e) => setCardData({ ...cardData, cpf: e.target.value })}
-                onFocus={() => {
-                  if (censorSensitiveData) setCensorSensitiveData(false);
-                }}
-                placeholder="***.***.***-**"
+                placeholder="000.000.000-00"
                 className="w-full px-3 py-2.5 rounded-xl text-xs font-mono font-medium border border-[#ded5c0] bg-white focus:border-[#2d5a37] focus:ring-2 focus:ring-[#2d5a37]/10 outline-none"
               />
             </div>
@@ -293,16 +200,10 @@ export default function PaymentForm({
               <span>Taxa de Entrega (Zona Sul):</span>
               <span className="text-emerald-700 font-bold">Grátis</span>
             </div>
-            <div className="flex justify-between text-[11px] text-[#706c61]">
-              <span>Cartão Cadastrado:</span>
-              <span className="font-mono text-stone-700 font-semibold">
-                {getCensoredCardNumber(cardData.number)}
-              </span>
-            </div>
             <div className="pt-1.5 border-t border-[#ded5c0] text-[10px] text-[#706c61] leading-relaxed flex items-center gap-1.5">
               <RefreshCw className="w-3 h-3 text-[#bc6c25] shrink-0" />
               <span>
-                Cobrança recorrente semanal protegida. Dados sensíveis transmitidos com tokenização e censura por asteriscos (*).
+                Cobrança recorrente a cada ciclo semanal no cartão de crédito cadastrado. Pause ou cancele sem burocracia quando viajar.
               </span>
             </div>
           </div>

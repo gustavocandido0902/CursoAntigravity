@@ -188,7 +188,7 @@ export const INITIAL_ORDERS = [
     createdAt: 'Hoje às 07:30',
     deliveryTimeSlot: 'Manhã (08:00 - 12:00)',
     notes: 'Interfone 802. Pode deixar na portaria se eu não atender.',
-    paymentMethod: 'Cartão de Crédito Recorrente (**** 8920)',
+    paymentMethod: 'Cartão de Crédito Recorrente (•••• 8920)',
     photoUrl: null,
     deliveredAt: null,
     driverNotes: null
@@ -205,7 +205,7 @@ export const INITIAL_ORDERS = [
     createdAt: 'Hoje às 07:15',
     deliveryTimeSlot: 'Manhã (08:00 - 12:00)',
     notes: 'Cuidado com o cachorro no portão, tocar campainha social.',
-    paymentMethod: 'Cartão de Crédito Recorrente (**** 4118)',
+    paymentMethod: 'Cartão de Crédito Recorrente (•••• 4118)',
     photoUrl: null,
     deliveredAt: null,
     driverNotes: null
@@ -222,7 +222,7 @@ export const INITIAL_ORDERS = [
     createdAt: 'Hoje às 06:50',
     deliveryTimeSlot: 'Primeira Rota (07:30 - 09:30)',
     notes: 'Portaria 24h.',
-    paymentMethod: 'Cartão de Crédito Recorrente (**** 3392)',
+    paymentMethod: 'Cartão de Crédito Recorrente (•••• 3392)',
     photoUrl: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80',
     deliveredAt: 'Hoje às 08:42',
     driverNotes: 'Entregue ao porteiro Sr. Manoel conforme instrução.'
