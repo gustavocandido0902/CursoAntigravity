@@ -1,0 +1,203 @@
+.card-lista-produtos {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.card-header-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dica-interacao-tabela {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-size: 0.825rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-busca {
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.9rem;
+  min-width: 280px;
+  background-color: #f8fafc;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input-busca:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background-color: #ffffff;
+}
+
+.tabela-container {
+  overflow-x: auto;
+}
+
+.tabela-produtos {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabela-produtos th {
+  background-color: #f8fafc;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.tabela-produtos td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.linha-produto-clicavel {
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.linha-produto-clicavel:hover {
+  background-color: #f0f7ff !important;
+}
+
+.col-nome-com-foto {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.miniatura-produto {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.linha-produto-clicavel:hover .miniatura-produto {
+  transform: scale(1.08);
+}
+
+.miniatura-fallback {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.nome-e-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.nome-principal {
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.preview-descricao {
+  font-size: 0.775rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+}
+
+.col-sku {
+  font-family: monospace;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.badge-categoria {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+}
+
+.texto-centro {
+  text-align: center;
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-ok {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.status-alerta {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.status-critico {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.btn-ver-detalhes {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ver-detalhes:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.estado-vazio {
+  text-align: center;
+  padding: 2.5rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,68 @@
+.card-historico {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.tabela-historico {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabela-historico th {
+  background-color: #f8fafc;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.tabela-historico td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.tabela-historico tr:hover {
+  background-color: #f8fafc;
+}
+
+.col-data {
+  font-family: monospace;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.badge-tipo {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-tipo.entrada {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.badge-tipo.saida {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.col-produto {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.col-usuario {
+  color: #64748b;
+}

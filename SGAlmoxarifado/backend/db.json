@@ -1,0 +1,117 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Carlos Silva",
+      "cargo": "Admin"
+    },
+    {
+      "id": "2",
+      "nome": "Mariana Souza",
+      "cargo": "Operador"
+    },
+    {
+      "id": "3",
+      "nome": "Roberto Santos",
+      "cargo": "Almoxarife"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Parafuso Sextavado M8",
+      "sku": "PAR-M8-001",
+      "quantidade_estoque": 159,
+      "categoria": "Fixadores Industriais",
+      "descricao": "Fixador metálico de alta resistência mecânica, fabricado em aço carbono com acabamento zincado brilhante. Projetado para suportar cargas elevadas em uniões de estruturas metálicas, motores, suportes industriais e maquinários pesados com rosca métrica padrão M8.",
+      "imagem": "https://images.unsplash.com/photo-1581783898377-1c85bf937427?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "2",
+      "nome": "Chave de Fenda Cruzada",
+      "sku": "FER-CFD-002",
+      "quantidade_estoque": 20,
+      "categoria": "Ferramentas Manuais",
+      "descricao": "Ferramenta manual de precisão com haste forjada em liga de cromo-vanádio e ponta magnética temperada tipo Phillips. Seu cabo ergonômico emborrachado proporciona empunhadura firme e torque otimizado para montagem e manutenção mecânica e elétrica.",
+      "imagem": "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "3",
+      "nome": "Fita Isolante 20m",
+      "sku": "ELE-FIT-003",
+      "quantidade_estoque": 10,
+      "categoria": "Material Elétrico",
+      "descricao": "Fita adesiva antichamas de PVC de alta elasticidade com 20 metros de comprimento. Destinada à isolação elétrica confiável em emendas de condutores e cabos até 750V, com excelente vedação contra umidade, intempéries e resistência a temperaturas até 90°C.",
+      "imagem": "https://images.unsplash.com/photo-1607400201889-565b1dd75f8e?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "4",
+      "nome": "Martelo de Borracha",
+      "sku": "FER-MBR-004",
+      "quantidade_estoque": 18,
+      "categoria": "Ferramentas de Impacto",
+      "descricao": "Martelo de impacto com cabeça dupla em borracha vulcanizada preta e cabo de fibra de vidro anatômico amortecedor de choques. Projetado para golpear sem riscar, marcar ou danificar superfícies em assentamentos de pisos, ajustes de chapas e montagem de componentes.",
+      "imagem": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "5",
+      "nome": "Luva de Proteção Nitrílica",
+      "sku": "EPI-LUV-005",
+      "quantidade_estoque": 42,
+      "categoria": "Equipamento de Proteção (EPI)",
+      "descricao": "Luva de segurança confeccionada em borracha nitrílica de alta densidade sem pó, com palma texturizada antiderrapante. Oferece proteção superior contra óleos, graxas, solventes, abrasão e perfurações leves em ambientes industriais e laboratoriais.",
+      "imagem": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
+  "movimentacoes": [
+    {
+      "id": "1",
+      "produto_id": "1",
+      "usuario_id": "1",
+      "tipo": "entrada",
+      "quantidade_movimentada": 50,
+      "data": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "produto_id": "2",
+      "usuario_id": "2",
+      "tipo": "saida",
+      "quantidade_movimentada": 5,
+      "data": "2026-09-02T14:30:00.000Z"
+    },
+    {
+      "produto_id": "1",
+      "usuario_id": "1",
+      "tipo": "entrada",
+      "quantidade_movimentada": 4,
+      "data": "2026-10-03T17:50:32.775Z",
+      "id": "kh4_C3juC7Q"
+    },
+    {
+      "produto_id": "1",
+      "usuario_id": "1",
+      "tipo": "saida",
+      "quantidade_movimentada": 4,
+      "data": "2026-10-03T17:50:51.063Z",
+      "id": "-CF_VR702mc"
+    },
+    {
+      "produto_id": "2",
+      "usuario_id": "2",
+      "tipo": "saida",
+      "quantidade_movimentada": 5,
+      "data": "2026-10-03T17:52:11.766Z",
+      "id": "BbWmpWq-zVc"
+    },
+    {
+      "produto_id": "1",
+      "usuario_id": "3",
+      "tipo": "entrada",
+      "quantidade_movimentada": 9,
+      "data": "2026-10-03T17:55:19.990Z",
+      "id": "WRFi6-QH87Q"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
